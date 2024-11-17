@@ -1,5 +1,6 @@
 import React from 'react';
 import { GraduationCap, Heart, Clock, Users } from 'lucide-react';
+import myImage from '../images/profile.png';
 
 const AboutMe = () => {
   const qualities = [
@@ -40,7 +41,7 @@ const AboutMe = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           <div className="relative rounded-lg overflow-hidden shadow-xl">
             <img
-              src="https://images.unsplash.com/photo-1544717684-1243da23b545?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              src={myImage}
               alt="Julia Cisneros"
               className="w-full h-[500px] object-cover"
             />
