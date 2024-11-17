@@ -1,14 +1,15 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyBunRXCpeP3trQhBmot3P97WeO_uANZjFg",
+  authDomain: "cisnerosnutricion-de9dd.firebaseapp.com",
+  projectId: "cisnerosnutricion-de9dd",
+  storageBucket: "cisnerosnutricion-de9dd.appspot.com",
+  messagingSenderId: "684579468833",
+  appId: "1:684579468833:web:59a99301731fe44c711560",
+  measurementId: "G-EVQN0JT253"
 };
 
 const app = initializeApp(firebaseConfig);

@@ -1,9 +1,23 @@
 import React, { useState } from 'react';
 import { Menu, X, Salad } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  const navigation = [
+    { name: 'Inicio', path: '/' },
+    { name: 'Sobre Mí', path: '/sobre-mi' },
+    { name: 'Servicios', path: '/servicios' },
+    { name: 'Blog', path: '/blog' },
+    { name: 'Testimonios', path: '/testimonios' },
+    { name: 'Citas', path: '/citas' },
+  ];
+
+  const isActive = (path: string) => {
+    return location.pathname === path ? 'text-rose-600' : 'text-gray-600 hover:text-rose-600';
+  };
 
   return (
     <nav className="bg-white shadow-lg fixed w-full z-50">
@@ -17,15 +31,15 @@ const Navbar = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-600 hover:text-rose-600">Inicio</Link>
-            <Link to="/sobre-mi" className="text-gray-600 hover:text-rose-600">Sobre Mí</Link>
-            <a href="/#servicios" className="text-gray-600 hover:text-rose-600">Servicios</a>
-            <a href="/#testimonios" className="text-gray-600 hover:text-rose-600">Testimonios</a>
-            <a href="/#blog" className="text-gray-600 hover:text-rose-600">Blog</a>
-            <a href="/#citas" className="text-gray-600 hover:text-rose-600">Citas</a>
-            <button className="bg-rose-600 text-white px-4 py-2 rounded-md hover:bg-rose-700">
-              Contactar
-            </button>
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`${isActive(item.path)} transition-colors duration-200`}
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
 
           <div className="md:hidden flex items-center">
@@ -39,15 +53,16 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link to="/" className="block px-3 py-2 text-gray-600 hover:text-rose-600">Inicio</Link>
-            <Link to="/sobre-mi" className="block px-3 py-2 text-gray-600 hover:text-rose-600">Sobre Mí</Link>
-            <a href="/#servicios" className="block px-3 py-2 text-gray-600 hover:text-rose-600">Servicios</a>
-            <a href="/#testimonios" className="block px-3 py-2 text-gray-600 hover:text-rose-600">Testimonios</a>
-            <a href="/#blog" className="block px-3 py-2 text-gray-600 hover:text-rose-600">Blog</a>
-            <a href="/#citas" className="block px-3 py-2 text-gray-600 hover:text-rose-600">Citas</a>
-            <button className="w-full text-left px-3 py-2 bg-rose-600 text-white rounded-md hover:bg-rose-700">
-              Contactar
-            </button>
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`block px-3 py-2 ${isActive(item.path)}`}
+                onClick={() => setIsOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
         </div>
       )}
